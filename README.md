@@ -9,10 +9,10 @@
 [![Competition](https://img.shields.io/badge/竞赛-智慧城市三等奖-2563EB?style=for-the-badge)](docs/competition.md)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](prototype/requirements.txt)
 [![Flask](https://img.shields.io/badge/Flask-API-000000?style=for-the-badge&logo=flask&logoColor=white)](prototype/flowmind/api.py)
-[![AI Agent](https://img.shields.io/badge/AI-Agent-7C3AED?style=for-the-badge)](prototype/flowmind/agent/core_agent.py)
-[![RAG](https://img.shields.io/badge/RAG-FAISS-059669?style=for-the-badge)](prototype/flowmind/rag/simple_rag.py)
+[![Agent](https://img.shields.io/badge/Agent-Rule--based_Planner-7C3AED?style=for-the-badge)](prototype/flowmind/agent/core_agent.py)
+[![RAG](https://img.shields.io/badge/RAG-TF--IDF_Demo-059669?style=for-the-badge)](prototype/flowmind/rag/simple_rag.py)
 [![JavaScript Demo](https://img.shields.io/badge/JavaScript-Demo-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](demo/index.html)
-[![Qwen](https://img.shields.io/badge/LLM-Qwen--7B-6D28D9?style=for-the-badge)](docs/architecture.md)
+[![Proposal](https://img.shields.io/badge/Proposal-Qwen--7B-6D28D9?style=for-the-badge)](docs/architecture.md)
 [![Portfolio](https://img.shields.io/badge/Type-Portfolio-64748B?style=for-the-badge)](docs/background.md)
 [![Demo](https://img.shields.io/badge/Video-Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1WyEm6WEut/)
 [![GitHub](https://img.shields.io/badge/GitHub-H--Lab--Works-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/H-Lab-Works/urban-constellation-agent)
@@ -25,7 +25,7 @@
 
 An urban mobility analysis and AI decision-support Agent prototype for smart city planning. The project explores a human-centered planning workflow: translating migration-flow patterns into interactive maps, city-pair prediction, policy-effect evaluation, future scenario simulation, and macro urban-structure insight.
 
-This repository is a portfolio-ready version of **Urban Constellation**. It focuses on a runnable frontend demo, a Bilibili walkthrough, a minimal ReAct/RAG backend prototype, technical narrative, and clearly scoped mock tooling.
+This repository is a portfolio-ready version of **Urban Constellation**. It focuses on a runnable frontend demo, a Bilibili walkthrough, a minimal backend control-flow prototype, and clearly scoped mock tooling.
 
 ## Highlights
 
@@ -34,7 +34,21 @@ This repository is a portfolio-ready version of **Urban Constellation**. It focu
 - Policy-effect evaluation with simulated net impact and decision-support reporting.
 - Future scenario simulation with adjustable planning-investment intensity.
 - Macro urban-structure insight for Hubei, including network skeletons, Louvain communities, city hierarchy, and AI-style analysis reports.
-- Runnable backend prototype with a multi-turn ReAct loop, FAISS retrieval demo, and Flask endpoints for mock tools.
+- Runnable backend prototype with a multi-turn ReAct loop, TF-IDF retrieval demo, and Flask endpoints for mock tools.
+
+## Prototype Boundary
+
+What this repo actually ships:
+
+| Area | In this repo | Not in this repo |
+| --- | --- | --- |
+| Backend planner | Rule-based keyword planner with injectable interface | Real LLM inference or fine-tuned Qwen tool-calling |
+| Tools | SHA-256 hash pseudo-random mock outputs | STGCN / SCM / Louvain production models |
+| RAG | 12 English planning notes + TF-IDF + FAISS index | Embedding hybrid retrieval or real migration corpora |
+| Frontend demo | Static JS maps, controls, and narrative UI | Live backend integration |
+| Quality | Manual smoke runs | Unit tests, CI, Docker, one-click bootstrap |
+
+`requirements.txt` lists 4 dependencies (`faiss-cpu`, `flask`, `numpy`, `scikit-learn`). That is enough for a portfolio walkthrough, but not enough to claim a reproducible research prototype.
 
 ## Demo
 
@@ -83,7 +97,7 @@ The demo uses:
 
 ## Technical Direction
 
-The competition design used an Agent architecture:
+The competition proposal described this target architecture:
 
 ```text
 Natural language request
@@ -93,14 +107,20 @@ Natural language request
   -> visualization and decision report
 ```
 
-Planned model stack in the technical proposal:
+Planned production stack in the proposal:
 
 - Base model: Qwen-7B-Chat
 - Fine-tuning: QLoRA / LoRA for domain tool-calling behavior
-- Retrieval: hybrid retrieval with vector search and keyword search
+- Retrieval: hybrid embedding + keyword search over migration corpora
 - Tools: flow prediction, causal-effect evaluation, community detection, multi-scale network analysis
 
-The Python code in `prototype/` is a runnable backend prototype. It uses deterministic mock tools instead of production models, but the ReAct control flow, retrieval flow, and Flask endpoints are real.
+What is implemented in `prototype/` today:
+
+- ReAct control flow with message history and tool observations
+- Rule-based planner instead of model inference
+- Hash-based mock tools instead of trained models
+- 12-note TF-IDF retrieval demo instead of hybrid embedding RAG
+- Flask API wiring for local inspection
 
 ## Backend Prototype
 
@@ -119,7 +139,7 @@ Run the multi-turn ReAct Agent:
 PYTHONPATH=. python3 flowmind/agent/core_agent.py
 ```
 
-Run the minimal FAISS RAG example:
+Run the minimal TF-IDF + FAISS RAG example:
 
 ```bash
 PYTHONPATH=. python3 flowmind/rag/simple_rag.py "How should Hubei's urban structure be analyzed?"
@@ -178,3 +198,7 @@ The project won a third prize in the China Graduate Smart City Technology and Cr
 ## Notes
 
 Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
+
+There is currently no CI, Docker setup, or automated test suite. Reproducibility is limited to the manual commands documented above.
+
+The demo video is hosted on [Bilibili](https://www.bilibili.com/video/BV1WyEm6WEut/). Local copies under `assets/` are kept for editing and re-upload only.

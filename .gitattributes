@@ -1,0 +1,3 @@
+# GitHub Linguist: demo/ is application code, not documentation.
+demo/** -linguist-documentation
+demo/data/** linguist-generated

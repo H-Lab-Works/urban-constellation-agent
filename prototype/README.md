@@ -4,13 +4,22 @@ This folder contains a runnable minimal prototype for the portfolio version.
 
 ## What Runs
 
-- `flowmind/agent/core_agent.py`: a multi-turn ReAct Agent. Tool observations are appended to the message history before the Agent produces a final answer.
-- `flowmind/tools/flow_tools.py`: deterministic mock tools for flow prediction, policy evaluation, and macro-structure analysis.
-- `flowmind/rag/simple_rag.py`: a minimal FAISS retrieval example over configurable planning notes.
+- `flowmind/agent/core_agent.py`: multi-turn ReAct loop with a **rule-based keyword planner** by default. A real model adapter can be injected through `planner`, but none is bundled.
+- `flowmind/tools/flow_tools.py`: **SHA-256 hash pseudo-random mock tools** for flow prediction, policy evaluation, and macro-structure analysis.
+- `flowmind/rag/simple_rag.py`: retrieval over **12 English planning notes** using **TF-IDF + FAISS**. This is not embedding hybrid retrieval and does not use real migration corpora.
 - `flowmind/models/simulator.py`: deterministic causal and scenario simulation demos.
-- `flowmind/api.py`: a lightweight Flask API that exposes the Agent and mock tools.
-- `config/rag_documents.json`: sample retrieval corpus for the RAG demo.
+- `flowmind/api.py`: lightweight Flask API that exposes the Agent and mock tools.
+- `config/rag_documents.json`: the 12-note sample retrieval corpus.
 - `models.yaml`: documented target-model configuration for the production direction.
+
+## What Does Not Ship
+
+- Real LLM inference or fine-tuned Qwen tool-calling
+- STGCN / SCM / Louvain production models
+- Embedding-based hybrid RAG
+- Unit tests, CI, Docker, or one-click bootstrap scripts
+
+`requirements.txt` contains only 4 dependencies. That is enough for a portfolio walkthrough, not a reproducible research prototype.
 
 ## Install
 
@@ -27,7 +36,7 @@ pip install -r requirements.txt
 PYTHONPATH=. python3 flowmind/agent/core_agent.py
 ```
 
-## Run The FAISS RAG Demo
+## Run The TF-IDF RAG Demo
 
 ```bash
 PYTHONPATH=. python3 flowmind/rag/simple_rag.py "How should Hubei's urban structure be analyzed?"
@@ -63,6 +72,6 @@ curl -X POST http://127.0.0.1:5050/api/rag \
 
 ## Boundary
 
-The tools are mock implementations, but the control flow is real: the Agent reasons, calls a tool, receives an observation, and then answers from that observation.
+The control flow is real: the Agent calls a tool, receives an observation, and then answers from that observation.
 
-The `.env.example` file documents local runtime values. The prototype currently reads defaults directly from code so it can run without environment setup.
+The intelligence layer is not: planner routing, tool outputs, and retrieval evidence are all deterministic mock/demo implementations.

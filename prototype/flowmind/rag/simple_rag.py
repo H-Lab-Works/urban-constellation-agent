@@ -60,7 +60,7 @@ class FaissRagDemo:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run the minimal FAISS RAG demo.")
+    parser = argparse.ArgumentParser(description="Run the minimal TF-IDF + FAISS RAG demo.")
     parser.add_argument("query", nargs="?", default="How should Hubei's urban structure be analyzed?")
     parser.add_argument("--top-k", type=int, default=3)
     parser.add_argument("--documents", default=str(DEFAULT_DOCUMENT_PATH))
