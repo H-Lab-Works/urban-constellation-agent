@@ -1,8 +1,31 @@
+<div align="center">
+
+![Urban Constellation banner](assets/banner.png)
+
 # Urban Constellation Agent
+
+**城市星图 · Urban mobility intelligence for smart city planning**
+
+[![Competition](https://img.shields.io/badge/竞赛-智慧城市三等奖-2563EB?style=for-the-badge)](docs/competition.md)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](prototype/requirements.txt)
+[![Flask](https://img.shields.io/badge/Flask-API-000000?style=for-the-badge&logo=flask&logoColor=white)](prototype/flowmind/api.py)
+[![AI Agent](https://img.shields.io/badge/AI-Agent-7C3AED?style=for-the-badge)](prototype/flowmind/agent/core_agent.py)
+[![RAG](https://img.shields.io/badge/RAG-FAISS-059669?style=for-the-badge)](prototype/flowmind/rag/simple_rag.py)
+[![Frontend](https://img.shields.io/badge/Demo-JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](demo/)
+[![Qwen](https://img.shields.io/badge/LLM-Qwen--7B-6D28D9?style=for-the-badge)](docs/architecture.md)
+[![Portfolio](https://img.shields.io/badge/Type-Portfolio-64748B?style=for-the-badge)](docs/background.md)
+[![Demo](https://img.shields.io/badge/Video-Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1WyEm6WEut/)
+[![GitHub](https://img.shields.io/badge/GitHub-H--Lab--Works-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/H-Lab-Works/urban-constellation-agent)
+
+[Demo Video](https://www.bilibili.com/video/BV1WyEm6WEut/) · [Run Locally](#run-locally) · [Backend Prototype](#backend-prototype) · [Architecture](docs/architecture.md) · [Competition](docs/competition.md)
+
+</div>
+
+---
 
 An urban mobility analysis and AI decision-support Agent prototype for smart city planning. The project explores a human-centered planning workflow: translating migration-flow patterns into interactive maps, city-pair prediction, policy-effect evaluation, future scenario simulation, and macro urban-structure insight.
 
-This repository is a portfolio-ready version of **Urban Constellation**. It focuses on a runnable frontend demo, a selected demo video, a minimal ReAct/RAG backend prototype, technical narrative, and clearly scoped mock tooling.
+This repository is a portfolio-ready version of **Urban Constellation**. It focuses on a runnable frontend demo, a Bilibili walkthrough, a minimal ReAct/RAG backend prototype, technical narrative, and clearly scoped mock tooling.
 
 ## Highlights
 
@@ -15,7 +38,7 @@ This repository is a portfolio-ready version of **Urban Constellation**. It focu
 
 ## Demo
 
-[![Watch on Bilibili](https://img.shields.io/badge/Demo-Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1WyEm6WEut/)
+[![Watch on Bilibili](https://img.shields.io/badge/Watch-Full_Demo-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1WyEm6WEut/)
 
 **[▶ Watch the full demo video on Bilibili](https://www.bilibili.com/video/BV1WyEm6WEut/)**
 
@@ -134,9 +157,9 @@ curl -X POST http://127.0.0.1:5050/api/rag \
 
 ```text
 .
+├── assets/        # Banner and portfolio assets
 ├── demo/          # Runnable static front-end demo
 ├── docs/          # Background, architecture, sample output, and competition notes
-├── assets/        # Demo video and portfolio assets
 └── prototype/     # Runnable mock Agent, RAG, simulation, and Flask prototype
 ```
 
@@ -156,4 +179,4 @@ The project won a third prize in the China Graduate Smart City Technology and Cr
 
 Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
 
-Note: The demo video is hosted on Bilibili. Local copies under `assets/` are kept for editing and re-upload only.
+The demo video is hosted on [Bilibili](https://www.bilibili.com/video/BV1WyEm6WEut/). Local copies under `assets/` are kept for editing and re-upload only.
