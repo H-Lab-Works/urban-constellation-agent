@@ -15,9 +15,9 @@ This repository is a portfolio-ready version of **Urban Constellation**. It focu
 
 ## Demo
 
-[Watch the demo video](assets/demo-video-preview.mp4)
+<video controls width="100%" src="https://github.com/H-Lab-Works/urban-constellation-agent/raw/main/assets/demo-video-preview.mp4"></video>
 
-A compressed 720p preview (~16MB) is committed for in-browser playback on GitHub. The original full-quality video stays local as `assets/demo-video.mp4`.
+Compressed 480p preview (~7MB) for GitHub README playback. The original full-quality video stays local as `assets/demo-video.mp4`.
 
 ### Run Locally
 
@@ -156,4 +156,4 @@ The project won a third prize in the China Graduate Smart City Technology and Cr
 
 Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
 
-Note: The original `assets/demo-video.mp4` (~409MB) is kept locally. The committed `assets/demo-video-preview.mp4` is a compressed version for GitHub preview.
+Note: The original `assets/demo-video.mp4` (~409MB) is kept locally. The committed `assets/demo-video-preview.mp4` is a compressed version for GitHub README preview.
