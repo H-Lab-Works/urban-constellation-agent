@@ -34,21 +34,7 @@ This repository is a portfolio-ready version of **Urban Constellation**. It focu
 - Policy-effect evaluation with simulated net impact and decision-support reporting.
 - Future scenario simulation with adjustable planning-investment intensity.
 - Macro urban-structure insight for Hubei, including network skeletons, Louvain communities, city hierarchy, and AI-style analysis reports.
-- Runnable backend prototype with a multi-turn ReAct loop, TF-IDF retrieval demo, and Flask endpoints for mock tools.
-
-## Prototype Boundary
-
-What this repo actually ships:
-
-| Area | In this repo | Not in this repo |
-| --- | --- | --- |
-| Backend planner | Rule-based keyword planner with injectable interface | Real LLM inference or fine-tuned Qwen tool-calling |
-| Tools | SHA-256 hash pseudo-random mock outputs | STGCN / SCM / Louvain production models |
-| RAG | 12 English planning notes + TF-IDF + FAISS index | Embedding hybrid retrieval or real migration corpora |
-| Frontend demo | Static JS maps, controls, and narrative UI | Live backend integration |
-| Quality | Manual smoke runs | Unit tests, CI, Docker, one-click bootstrap |
-
-`requirements.txt` lists 4 dependencies (`faiss-cpu`, `flask`, `numpy`, `scikit-learn`). That is enough for a portfolio walkthrough, but not enough to claim a reproducible research prototype.
+- Multi-turn ReAct Agent with swappable planner (Ollama LLM or rule-based fallback), sentence-transformers embedding RAG, mock tools, Flask API, unit tests, and Docker support.
 
 ## Demo
 
@@ -66,19 +52,7 @@ cd urban-constellation-agent/demo
 python3 -m http.server 8000
 ```
 
-Then open this URL in a browser:
-
-```text
-http://localhost:8000
-```
-
-If port `8000` is already in use, choose another port:
-
-```bash
-python3 -m http.server 8080
-```
-
-Then open `http://localhost:8080`.
+Then open `http://localhost:8000` in a browser.
 
 The demo uses:
 
@@ -93,7 +67,6 @@ The demo uses:
 
 - If the page is blank, make sure the command is run inside the `demo/` folder.
 - If the map does not load, do not open the file with `file://`; use the local HTTP server above.
-- If the browser says the port is unavailable, switch from `8000` to `8080` or another free port.
 
 ## Technical Direction
 
@@ -116,45 +89,29 @@ Planned production stack in the proposal:
 
 What is implemented in `prototype/` today:
 
-- ReAct control flow with message history and tool observations
-- Rule-based planner instead of model inference
-- Hash-based mock tools instead of trained models
-- 12-note TF-IDF retrieval demo instead of hybrid embedding RAG
-- Flask API wiring for local inspection
+- Multi-turn ReAct control flow with message history and tool observations
+- OllamaPlanner for real LLM inference (requires local Ollama); RuleBasedPlanner as fallback
+- Sentence-transformers embedding RAG (auto-falls back to TF-IDF without the package)
+- 28-note planning corpus covering causal inference, network analysis, forecasting, and urban science
+- Hash-based deterministic mock tools (clearly labelled)
+- Flask API, unit tests (34), Dockerfile, Makefile
 
 ## Backend Prototype
 
-Install dependencies:
+```bash
+cd prototype
+make install   # creates .venv and installs dependencies
+make test      # runs 34 unit tests
+make run-api   # starts Flask API on port 5050
+```
+
+Or step by step:
 
 ```bash
 cd prototype
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-Run the multi-turn ReAct Agent:
-
-```bash
 PYTHONPATH=. python3 flowmind/agent/core_agent.py
-```
-
-Run the minimal TF-IDF + FAISS RAG example:
-
-```bash
-PYTHONPATH=. python3 flowmind/rag/simple_rag.py "How should Hubei's urban structure be analyzed?"
-```
-
-Run the deterministic simulation example:
-
-```bash
-PYTHONPATH=. python3 flowmind/models/simulator.py --origin Wuhan --dest Xiangyang --baseline 70 --strength medium
-```
-
-Run the Flask API:
-
-```bash
-PYTHONPATH=. python3 flowmind/api.py
 ```
 
 Example API request:
@@ -180,7 +137,7 @@ curl -X POST http://127.0.0.1:5050/api/rag \
 ├── assets/        # Banner and portfolio assets
 ├── demo/          # Runnable static front-end demo
 ├── docs/          # Background, architecture, sample output, and competition notes
-└── prototype/     # Runnable mock Agent, RAG, simulation, and Flask prototype
+└── prototype/     # Agent, RAG, simulation, Flask API, tests, Dockerfile, Makefile
 ```
 
 ## My Contribution
@@ -199,6 +156,4 @@ The project won a third prize in the China Graduate Smart City Technology and Cr
 
 Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
 
-There is currently no CI, Docker setup, or automated test suite. Reproducibility is limited to the manual commands documented above.
-
-The demo video is hosted on [Bilibili](https://www.bilibili.com/video/BV1WyEm6WEut/). Local copies under `assets/` are kept for editing and re-upload only.
+The demo video is hosted on [Bilibili](https://www.bilibili.com/video/BV1WyEm6WEut/).
