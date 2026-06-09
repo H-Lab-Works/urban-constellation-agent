@@ -1,0 +1,82 @@
+[
+  {
+    "query": "How should Hubei's urban structure be analyzed?",
+    "expected_parent_ids": ["hubei-core", "core-periphery", "community-detection"]
+  },
+  {
+    "query": "What is Wuhan's role in the Hubei migration network?",
+    "expected_parent_ids": ["hubei-core", "core-periphery"]
+  },
+  {
+    "query": "Explain Louvain community detection for urban clusters",
+    "expected_parent_ids": ["community-detection", "multiscale-analysis", "hubei-louvain-16"]
+  },
+  {
+    "query": "How do we evaluate a railway station opening with synthetic control?",
+    "expected_parent_ids": ["policy-evaluation", "synthetic-control", "scm-donor-08"]
+  },
+  {
+    "query": "What confounders affect urban mobility causal studies?",
+    "expected_parent_ids": ["confounders", "placebo-test-09"]
+  },
+  {
+    "query": "Forecast future city-pair mobility with spatio-temporal graph models",
+    "expected_parent_ids": ["stgcn-forecasting", "hubei-stgcn-11"]
+  },
+  {
+    "query": "Compare gravity model and radiation model for migration",
+    "expected_parent_ids": ["gravity-model", "radiation-model"]
+  },
+  {
+    "query": "How should planning reports connect model outputs to transport investment?",
+    "expected_parent_ids": ["planning-report", "transport-recommendation"]
+  },
+  {
+    "query": "How does RAG grounding reduce hallucinations in planning agents?",
+    "expected_parent_ids": ["rag-grounding", "agent-rag-flow-23"]
+  },
+  {
+    "query": "What metrics evaluate migration forecasting models?",
+    "expected_parent_ids": ["evaluation-metrics", "eval-backtest-30"]
+  },
+  {
+    "query": "What are limitations of mobile phone mobility datasets?",
+    "expected_parent_ids": ["data-limitations", "data-privacy-28"]
+  },
+  {
+    "query": "Simulate medium intensity planning investment on corridor flows",
+    "expected_parent_ids": ["scenario-simulation", "scenario-high-15"]
+  },
+  {
+    "query": "Which Hubei cities act as relay nodes with high betweenness?",
+    "expected_parent_ids": ["network-centrality", "hubei-betweenness-17"]
+  },
+  {
+    "query": "Explain difference in differences for policy evaluation",
+    "expected_parent_ids": ["diff-in-diff", "hubei-did-07"]
+  },
+  {
+    "query": "How should public services scale with inbound migration?",
+    "expected_parent_ids": ["service-allocation", "hubei-service-report-21"]
+  },
+  {
+    "query": "What drives inter-city migration in China?",
+    "expected_parent_ids": ["inter-city-migration", "national-tier-27"]
+  },
+  {
+    "query": "How do hybrid BM25 and embedding retrieval help planning search?",
+    "expected_parent_ids": ["extra-010"]
+  },
+  {
+    "query": "What is polycentric urban development?",
+    "expected_parent_ids": ["polycentric-development"]
+  },
+  {
+    "query": "How should retrieval quality be benchmarked?",
+    "expected_parent_ids": ["eval-recall-29", "evaluation-metrics"]
+  },
+  {
+    "query": "Analyze Xiangyang sub-center role in western Hubei",
+    "expected_parent_ids": ["hubei-core", "hubei-betweenness-17", "hubei-corridor"]
+  }
+]

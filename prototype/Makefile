@@ -6,7 +6,7 @@ PYTHON := $(VENV)/bin/python
 PIP    := $(VENV)/bin/pip
 PYTEST := $(VENV)/bin/pytest
 
-.PHONY: install run-agent run-rag run-api test docker-build docker-run clean
+.PHONY: install run-agent run-rag run-api eval-rag test docker-build docker-run clean
 
 ## ── setup ──────────────────────────────────────────────────────────────────
 
@@ -23,6 +23,9 @@ run-agent:
 
 run-rag:
 	PYTHONPATH=. $(PYTHON) flowmind/rag/simple_rag.py "How should Hubei's urban structure be analyzed?"
+
+eval-rag:
+	PYTHONPATH=. $(PYTHON) flowmind/rag/simple_rag.py --eval --top-k 5
 
 run-api:
 	PYTHONPATH=. $(PYTHON) flowmind/api.py

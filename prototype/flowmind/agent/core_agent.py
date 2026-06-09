@@ -19,12 +19,23 @@ from __future__ import annotations
 import json
 import re
 from dataclasses import dataclass, field
-from typing import Any, Callable
+from typing import Any, Callable, Protocol
 
+from flowmind.rag.llm import format_evidence
 from flowmind.tools.flow_tools import FlowTools
 
 ToolCall = dict[str, Any]
 ModelStep = dict[str, Any]
+
+
+class RagBackend(Protocol):
+    def search(
+        self,
+        query: str,
+        top_k: int = 5,
+        metadata_filter: dict[str, str] | None = None,
+    ) -> list[dict[str, Any]]:
+        ...
 
 _TOOL_SCHEMA = """
 Available tools (respond with strict JSON matching one of these):
@@ -108,9 +119,13 @@ class RuleBasedPlanner:
         observations = [m for m in messages if m["role"] == "tool"]
         if observations:
             latest = json.loads(observations[-1]["content"])
+            summary = self._summarize(latest)
+            citations = _citation_ids_from_messages(messages)
+            if citations:
+                summary += f" Grounding sources: {', '.join(citations[:3])}."
             return {
-                "thought": "Tool observation received; summarising result.",
-                "final_answer": self._summarize(latest),
+                "thought": "Tool observation received; summarising result with retrieved context.",
+                "final_answer": summary,
             }
 
         query = user_query.lower()
@@ -219,6 +234,23 @@ def _extract_year(text: str, default: int) -> int:
     return int(match.group(1)) if match else default
 
 
+def _citation_ids_from_messages(messages: list[dict[str, str]]) -> list[str]:
+    ids: list[str] = []
+    for message in messages:
+        content = message.get("content", "")
+        if "Retrieved planning knowledge" not in content:
+            continue
+        ids.extend(re.findall(r"\[([^|\]]+)", content))
+    # Preserve order while deduplicating
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for doc_id in ids:
+        if doc_id not in seen:
+            seen.add(doc_id)
+            ordered.append(doc_id)
+    return ordered
+
+
 # ── agent ────────────────────────────────────────────────────────────────────
 
 @dataclass
@@ -238,6 +270,8 @@ class CoreAgent:
 
     tool_config: dict | None = None
     planner: Callable[[list[dict[str, str]], str], ModelStep] | None = None
+    rag: RagBackend | None = None
+    rag_top_k: int = 5
     max_steps: int = 5
     tools: FlowTools = field(init=False)
 
@@ -245,13 +279,34 @@ class CoreAgent:
         self.tools = FlowTools(self.tool_config or {})
         if self.planner is None:
             self.planner = build_planner()
+        if self.rag is None:
+            from flowmind.rag.simple_rag import build_rag
+
+            self.rag = build_rag()
 
     def run(self, user_query: str) -> dict:
+        retrieved: list[dict[str, Any]] = []
+        if self.rag is not None:
+            retrieved = self.rag.search(user_query, top_k=self.rag_top_k)
+
         messages: list[dict[str, str]] = [
             {"role": "system", "content": self._system_prompt()},
-            {"role": "user", "content": user_query},
         ]
+        if retrieved:
+            messages.append(
+                {
+                    "role": "user",
+                    "content": (
+                        "Retrieved planning knowledge (ground your answer in this evidence):\n"
+                        + format_evidence(retrieved)
+                    ),
+                }
+            )
+        messages.append({"role": "user", "content": user_query})
+
         trace: list[dict[str, Any]] = []
+        if retrieved:
+            trace.append({"retrieved": retrieved})
 
         for step_index in range(1, self.max_steps + 1):
             model_step = self.planner(messages, user_query)
@@ -260,6 +315,7 @@ class CoreAgent:
             if model_step.get("final_answer"):
                 return {
                     "answer": model_step["final_answer"],
+                    "retrieved": retrieved,
                     "trace": trace,
                     "messages": messages,
                 }
@@ -268,6 +324,7 @@ class CoreAgent:
             if not tool_call:
                 return {
                     "answer": "Agent stopped: no tool call or final answer produced.",
+                    "retrieved": retrieved,
                     "trace": trace,
                     "messages": messages,
                 }
@@ -280,6 +337,7 @@ class CoreAgent:
 
         return {
             "answer": "Agent reached the step limit without producing a final answer.",
+            "retrieved": retrieved,
             "trace": trace,
             "messages": messages,
         }
@@ -314,7 +372,8 @@ class CoreAgent:
             "You are an urban planning AI assistant. "
             "Use the ReAct pattern: think step by step, call one tool at a time, "
             "observe the result, then produce a grounded final answer. "
-            "Do not fabricate data; rely only on tool outputs."
+            "Use retrieved planning knowledge when provided, and do not fabricate data; "
+            "rely on tool outputs and retrieved evidence."
         )
 
 

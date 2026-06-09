@@ -2,15 +2,15 @@ import os
 
 from flask import Flask, jsonify, request
 
-from flowmind.agent.core_agent import CoreAgent
+from flowmind.agent.core_agent import CoreAgent, RuleBasedPlanner
 from flowmind.rag.simple_rag import build_rag
 from flowmind.tools.flow_tools import FlowTools
 
 
 app = Flask(__name__)
-agent = CoreAgent()
-tools = FlowTools()
 rag = build_rag(os.getenv("RAG_DOCUMENT_PATH", "config/rag_documents.json"))
+agent = CoreAgent(rag=rag)
+tools = FlowTools()
 
 
 @app.after_request

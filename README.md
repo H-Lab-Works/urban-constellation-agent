@@ -10,7 +10,7 @@
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](prototype/requirements.txt)
 [![Flask](https://img.shields.io/badge/Flask-API-000000?style=for-the-badge&logo=flask&logoColor=white)](prototype/flowmind/api.py)
 [![Agent](https://img.shields.io/badge/Agent-Ollama_or_Rules-7C3AED?style=for-the-badge)](prototype/flowmind/agent/core_agent.py)
-[![RAG](https://img.shields.io/badge/RAG-Embedding_Demo-059669?style=for-the-badge)](prototype/flowmind/rag/simple_rag.py)
+[![RAG](https://img.shields.io/badge/RAG-Hybrid_Grounded-059669?style=for-the-badge)](prototype/flowmind/rag/simple_rag.py)
 [![JavaScript Demo](https://img.shields.io/badge/JavaScript-Demo-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](demo/index.html)
 [![Proposal](https://img.shields.io/badge/Proposal-Qwen--7B-6D28D9?style=for-the-badge)](docs/architecture.md)
 [![Portfolio](https://img.shields.io/badge/Type-Portfolio-64748B?style=for-the-badge)](docs/background.md)
@@ -34,7 +34,7 @@ This repository is a portfolio-ready version of **Urban Constellation**. It focu
 - Policy-effect evaluation with simulated net impact and decision-support reporting.
 - Future scenario simulation with adjustable planning-investment intensity.
 - Macro urban-structure insight for Hubei, including network skeletons, Louvain communities, city hierarchy, and AI-style analysis reports.
-- Multi-turn ReAct Agent with swappable planner (Ollama LLM or rule-based fallback), sentence-transformers embedding RAG, mock tools, Flask API, unit tests, and Docker support.
+- Multi-turn ReAct Agent with RAG-grounded context, swappable planner (Ollama LLM or rule-based fallback), hybrid BM25+embedding retrieval, mock tools, Flask API, unit tests, and Docker support.
 
 ## Demo
 
@@ -89,19 +89,20 @@ Planned production stack in the proposal:
 
 What is implemented in `prototype/` today:
 
-- Multi-turn ReAct control flow with message history and tool observations
+- Multi-turn ReAct control flow with retrieved planning evidence injected before tool calls
 - OllamaPlanner for real LLM inference (requires local Ollama); RuleBasedPlanner as fallback
-- Sentence-transformers embedding RAG (auto-falls back to TF-IDF without the package)
-- 28-note planning corpus covering causal inference, network analysis, forecasting, and urban science
-- Hash-based deterministic mock tools (clearly labelled)
-- Flask API, unit tests (34), Dockerfile, Makefile
+- Hybrid BM25 + embedding retrieval (TF-IDF dense fallback without sentence-transformers)
+- 105-note planning corpus with topic/region/method metadata and chunking support
+- Grounded answer synthesis via Ollama with template fallback
+- Flask API, unit tests (41), retrieval eval set, Dockerfile, Makefile
 
 ## Backend Prototype
 
 ```bash
 cd prototype
 make install   # creates .venv and installs dependencies
-make test      # runs 34 unit tests
+make test      # runs unit tests
+make eval-rag  # runs retrieval Recall@k / MRR benchmark
 make run-api   # starts Flask API on port 5050
 ```
 

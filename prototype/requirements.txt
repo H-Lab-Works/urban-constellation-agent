@@ -7,6 +7,9 @@ scikit-learn
 # Unit tests
 pytest
 
+# Hybrid retrieval
+rank-bm25
+
 # Embedding RAG (dense retrieval, ~90 MB model download on first use).
 # Install to enable EmbeddingRag; the prototype falls back to TfidfRag without it.
 sentence-transformers

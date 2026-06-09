@@ -2,141 +2,736 @@
   {
     "id": "hubei-core",
     "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
     "text": "Hubei's mobility network is centered on Wuhan, with Xiangyang and Yichang acting as major sub-centers that anchor western and northern corridors."
   },
   {
     "id": "hubei-potential-nodes",
     "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
     "text": "Xiaogan, Jingzhou, and Huanggang function as potential nodes in the Hubei network because they relay secondary flows between the Wuhan core and peripheral counties."
   },
   {
     "id": "hubei-corridor",
     "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
     "text": "The Wuhan–Xiangyang–Xi'an corridor is a major inter-provincial flow channel; strengthening it supports both intra-provincial integration and national east–west connectivity."
   },
   {
     "id": "hubei-three-gorges",
     "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
     "text": "The Three Gorges area introduces spatial discontinuity in western Hubei; Yichang's sub-center role partly compensates by bridging eastern Hubei flows with the Chongqing–Chengdu urban cluster."
   },
   {
     "id": "policy-evaluation",
     "topic": "causal-inference",
+    "region": "general",
+    "method": "synthetic-control",
     "text": "A railway station opening can be evaluated by comparing observed post-policy migration flow against a synthetic counterfactual baseline constructed from comparable unexposed city pairs."
   },
   {
     "id": "synthetic-control",
     "topic": "causal-inference",
+    "region": "general",
+    "method": "synthetic-control",
     "text": "Synthetic control builds a weighted average of donor city-pair trajectories from the pre-policy period; the difference between the treated unit and this synthetic path after policy onset estimates the treatment effect."
   },
   {
     "id": "diff-in-diff",
     "topic": "causal-inference",
+    "region": "general",
+    "method": "difference-in-differences",
     "text": "Difference-in-differences compares the pre–post change in treated city pairs to the same change in untreated control pairs, assuming parallel trends would have held absent the policy."
   },
   {
     "id": "confounders",
     "topic": "causal-inference",
+    "region": "general",
+    "method": "causal-inference",
     "text": "Common confounders in urban mobility studies include concurrent economic shocks, simultaneous infrastructure investments in adjacent corridors, and demographic compositional changes unrelated to the focal policy."
   },
   {
     "id": "scenario-simulation",
     "topic": "forecasting",
+    "region": "general",
+    "method": "scenario-simulation",
     "text": "Future planning scenarios translate investment intensity—low, medium, or high—into multiplicative adjustment factors applied to a baseline flow forecast, illustrating sensitivity rather than exact prediction."
   },
   {
     "id": "stgcn-forecasting",
     "topic": "forecasting",
+    "region": "general",
+    "method": "stgcn",
     "text": "Spatio-temporal graph convolution networks capture both the temporal autocorrelation of city-pair flows and the spatial autocorrelation induced by network adjacency when forecasting future mobility demand."
   },
   {
     "id": "gravity-model",
     "topic": "forecasting",
+    "region": "general",
+    "method": "gravity-model",
     "text": "The gravity model predicts inter-city flows as proportional to the product of origin and destination populations and inversely proportional to distance; it serves as a parametric baseline for more complex models."
   },
   {
     "id": "radiation-model",
     "topic": "forecasting",
+    "region": "general",
+    "method": "radiation-model",
     "text": "The radiation model estimates migration by modeling competition from intermediate population masses between origin and destination, offering a parameter-free alternative to the gravity model."
   },
   {
     "id": "community-detection",
     "topic": "network-analysis",
+    "region": "general",
+    "method": "louvain",
     "text": "Louvain community detection identifies cohesive urban clusters in a migration network by maximising modularity; at provincial scale it typically recovers one dominant core cluster and several peripheral sub-clusters."
   },
   {
     "id": "multiscale-analysis",
     "topic": "network-analysis",
+    "region": "general",
+    "method": "louvain",
     "text": "Varying the Louvain resolution parameter from fine to coarse reveals city-network structure at corridor, regional, and provincial scales, exposing both tight local communities and looser supra-regional groupings."
   },
   {
     "id": "network-centrality",
     "topic": "network-analysis",
+    "region": "general",
+    "method": "centrality",
     "text": "Betweenness centrality quantifies how often a city lies on shortest paths between all other city pairs; high-betweenness cities are strategic relay nodes whose disruption would fragment regional connectivity."
   },
   {
     "id": "core-periphery",
     "topic": "network-analysis",
+    "region": "general",
+    "method": "network-analysis",
     "text": "Core-periphery decomposition distinguishes densely connected hub cities from sparsely connected peripheral ones; the Hubei network exhibits a clear single-core structure with Wuhan as the dominant hub."
   },
   {
     "id": "planning-report",
     "topic": "reporting",
+    "region": "general",
+    "method": "reporting",
     "text": "An effective urban planning report connects model outputs to actionable recommendations for transport investment, industrial relocation incentives, and public-service allocation across city tiers."
   },
   {
     "id": "transport-recommendation",
     "topic": "reporting",
+    "region": "general",
+    "method": "reporting",
     "text": "High-flow corridors identified by network analysis should be prioritised for rail capacity upgrades; low-flow but high-betweenness corridors may warrant targeted feeder services to prevent bottlenecks."
   },
   {
     "id": "service-allocation",
     "topic": "reporting",
+    "region": "general",
+    "method": "reporting",
     "text": "Cities with high inflow but limited public-service capacity face rapid congestion externalities; pre-emptive healthcare, education, and housing investment should be scaled to projected flow absorption rates."
   },
   {
     "id": "agent-tool-use",
     "topic": "agent",
+    "region": "general",
+    "method": "react",
     "text": "The Agent converts natural-language planning questions into explicit tool calls using ReAct reasoning; it observes tool outputs before each subsequent step and terminates when a grounded answer can be produced."
   },
   {
     "id": "rag-grounding",
     "topic": "agent",
+    "region": "general",
+    "method": "rag",
     "text": "RAG grounding reduces hallucinated planning conclusions by prepending retrieved domain evidence to the generation context before the model produces its final response."
   },
   {
     "id": "tool-chaining",
     "topic": "agent",
+    "region": "general",
+    "method": "react",
     "text": "Complex planning queries may require chained tool calls—for example, first predicting baseline flow, then simulating a policy scenario on top of that prediction—which a multi-step ReAct loop handles naturally."
   },
   {
     "id": "inter-city-migration",
     "topic": "urban-science",
+    "region": "national",
+    "method": "urban-science",
     "text": "Inter-city migration flows in China are primarily driven by wage differentials, housing costs, educational and healthcare quality gaps, and administrative hukou policies that constrain permanent settlement."
   },
   {
     "id": "polycentric-development",
     "topic": "urban-science",
+    "region": "national",
+    "method": "urban-science",
     "text": "Polycentric urban development—building up secondary sub-centers rather than concentrating all growth in the primate city—can reduce congestion, lower inequality across city tiers, and improve regional resilience."
   },
   {
     "id": "shrinking-cities",
     "topic": "urban-science",
+    "region": "national",
+    "method": "urban-science",
     "text": "Persistent net outflow from small and mid-sized cities signals shrinkage risk; planners should model long-run demographic trajectories before committing to new infrastructure that will serve a declining population base."
   },
   {
     "id": "data-limitations",
     "topic": "urban-science",
+    "region": "general",
+    "method": "data-quality",
     "text": "Mobility datasets derived from mobile-phone signalling or platform trip records may underrepresent elderly and rural populations and overweight short-term travel; long-term settlement flows require complementary census or registration data."
   },
   {
     "id": "evaluation-metrics",
     "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
     "text": "Forecasting models for city-pair flows are evaluated by MAE, RMSE, and MAPE on held-out test periods; causal estimates should additionally report confidence intervals and placebo test results."
   },
   {
     "id": "validation-approach",
     "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
     "text": "A forward-chaining cross-validation scheme—training on earlier years and testing on later ones—respects the temporal order of mobility data and avoids leaking future information into the model."
+  },
+  {
+    "id": "hubei-macro-01",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "Wuhan absorbs the largest share of Hubei in-migration; planners should monitor hub congestion and corridor spillover toward Xiangyang and Yichang."
+  },
+  {
+    "id": "hubei-rail-02",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "High-speed rail expansion between Wuhan and Xiangyang reshaped weekly commuting patterns and strengthened the Wuhan metropolitan influence zone."
+  },
+  {
+    "id": "hubei-industry-03",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "Industrial relocation from Wuhan to nearby cities such as Xiaogan can decentralize employment while preserving supply-chain links to the core."
+  },
+  {
+    "id": "national-yangtze-04",
+    "topic": "macro-structure",
+    "region": "national",
+    "method": "network-analysis",
+    "text": "Yangtze River Delta and Pearl River Delta remain the two strongest national migration attractors, creating persistent outflow pressure on central provinces."
+  },
+  {
+    "id": "national-hub-05",
+    "topic": "macro-structure",
+    "region": "national",
+    "method": "network-analysis",
+    "text": "National hub cities combine high in-degree and out-degree centrality; they require differentiated policies for inbound service expansion and outbound corridor management."
+  },
+  {
+    "id": "hubei-rail-causal-06",
+    "topic": "causal-inference",
+    "region": "hubei",
+    "method": "synthetic-control",
+    "text": "Evaluating the Wuhan–Xiangyang high-speed rail opening requires donor city pairs with similar pre-2014 flow trends but no contemporaneous rail upgrade."
+  },
+  {
+    "id": "hubei-did-07",
+    "topic": "causal-inference",
+    "region": "hubei",
+    "method": "difference-in-differences",
+    "text": "A difference-in-differences design for Hubei station openings should include control pairs in neighboring provinces with comparable industrial structure."
+  },
+  {
+    "id": "scm-donor-08",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "synthetic-control",
+    "text": "Donor weights in synthetic control should be chosen to minimize pre-treatment RMSPE; poor donor fit invalidates post-treatment counterfactual claims."
+  },
+  {
+    "id": "placebo-test-09",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "causal-inference",
+    "text": "Placebo tests that assign fake policy years to untreated units help detect whether estimated effects are driven by model overfitting rather than true treatment impact."
+  },
+  {
+    "id": "event-study-10",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "causal-inference",
+    "text": "Event-study plots reveal whether migration responses to infrastructure open gradually or spike immediately after policy implementation."
+  },
+  {
+    "id": "hubei-stgcn-11",
+    "topic": "forecasting",
+    "region": "hubei",
+    "method": "stgcn",
+    "text": "ST-GCN models for Hubei should encode adjacency from observed OD flows and geographic distance as complementary graph edges."
+  },
+  {
+    "id": "hubei-gravity-12",
+    "topic": "forecasting",
+    "region": "hubei",
+    "method": "gravity-model",
+    "text": "Gravity baselines for Wuhan–Xiangyang flows remain useful sanity checks before deploying graph neural forecasters."
+  },
+  {
+    "id": "national-seasonality-13",
+    "topic": "forecasting",
+    "region": "national",
+    "method": "stgcn",
+    "text": "National migration flows exhibit strong Spring Festival seasonality; forecasting models must separate holiday shocks from structural trend."
+  },
+  {
+    "id": "scenario-low-14",
+    "topic": "forecasting",
+    "region": "general",
+    "method": "scenario-simulation",
+    "text": "Low-intensity planning scenarios assume incremental transport upgrades and modest industrial subsidy effects on inter-city mobility."
+  },
+  {
+    "id": "scenario-high-15",
+    "topic": "forecasting",
+    "region": "general",
+    "method": "scenario-simulation",
+    "text": "High-intensity scenarios combine major rail investment, industrial park openings, and hukou relaxation to stress-test corridor capacity."
+  },
+  {
+    "id": "hubei-louvain-16",
+    "topic": "network-analysis",
+    "region": "hubei",
+    "method": "louvain",
+    "text": "Louvain on Hubei OD networks at resolution 1.0 typically yields a Wuhan-centered megacluster plus western and northern peripheral communities."
+  },
+  {
+    "id": "hubei-betweenness-17",
+    "topic": "network-analysis",
+    "region": "hubei",
+    "method": "centrality",
+    "text": "Xiangyang's betweenness rises when western Hubei counties route through it to reach Wuhan, making it a critical relay for resilience planning."
+  },
+  {
+    "id": "national-communities-18",
+    "topic": "network-analysis",
+    "region": "national",
+    "method": "louvain",
+    "text": "At national scale, Louvain communities often align with macro-regional economic zones rather than strict provincial boundaries."
+  },
+  {
+    "id": "network-skeleton-19",
+    "topic": "network-analysis",
+    "region": "general",
+    "method": "network-analysis",
+    "text": "Network skeleton extraction retains the highest-weight edges to visualize dominant corridors without clutter from sparse long-tail links."
+  },
+  {
+    "id": "hubei-transport-report-20",
+    "topic": "reporting",
+    "region": "hubei",
+    "method": "reporting",
+    "text": "Hubei transport reports should rank corridors by predicted flow growth and identify where public transit gaps amplify private-car migration pressure."
+  },
+  {
+    "id": "hubei-service-report-21",
+    "topic": "reporting",
+    "region": "hubei",
+    "method": "reporting",
+    "text": "Service allocation reports for Hubei should flag counties with rising inflow but stagnant hospital bed and school seat capacity."
+  },
+  {
+    "id": "report-uncertainty-22",
+    "topic": "reporting",
+    "region": "general",
+    "method": "reporting",
+    "text": "Planning reports must communicate forecast uncertainty intervals and causal identification assumptions, not only point estimates."
+  },
+  {
+    "id": "agent-rag-flow-23",
+    "topic": "agent",
+    "region": "general",
+    "method": "rag",
+    "text": "The recommended Agent loop retrieves planning notes first, executes quantitative tools second, and synthesizes a cited narrative answer last."
+  },
+  {
+    "id": "agent-safety-24",
+    "topic": "agent",
+    "region": "general",
+    "method": "react",
+    "text": "Urban planning Agents should refuse to invent migration statistics and must cite retrieved evidence or tool outputs for every quantitative claim."
+  },
+  {
+    "id": "hubei-hukou-25",
+    "topic": "urban-science",
+    "region": "hubei",
+    "method": "urban-science",
+    "text": "Hukou reform pilots in selected Hubei counties increased registered migration toward Wuhan but effects varied by local employment absorption capacity."
+  },
+  {
+    "id": "hubei-aging-26",
+    "topic": "urban-science",
+    "region": "hubei",
+    "method": "urban-science",
+    "text": "Aging counties in eastern Hubei face dual pressure from youth outflow to Wuhan and rising elderly dependency ratios."
+  },
+  {
+    "id": "national-tier-27",
+    "topic": "urban-science",
+    "region": "national",
+    "method": "urban-science",
+    "text": "China's city-tier system influences migration aspirations; lower-tier cities compete through housing affordability rather than wage premiums alone."
+  },
+  {
+    "id": "data-privacy-28",
+    "topic": "urban-science",
+    "region": "general",
+    "method": "data-quality",
+    "text": "Mobility analytics for planning must comply with data minimization and aggregation standards before publishing corridor-level indicators."
+  },
+  {
+    "id": "eval-recall-29",
+    "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
+    "text": "Retrieval evaluation for planning knowledge bases should track Recall@k and MRR on curated question–document pairs before deployment."
+  },
+  {
+    "id": "eval-backtest-30",
+    "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
+    "text": "Backtesting migration forecasters on multiple holdout years reduces optimism from single-split validation."
+  },
+  {
+    "id": "extra-001",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "Wuhan's primate-city dominance in Hubei is moderated by polycentric investments in Xiangyang and Yichang."
+  },
+  {
+    "id": "extra-002",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "County-level flows into Wuhan peak after harvest seasons in surrounding agricultural belts."
+  },
+  {
+    "id": "extra-003",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "synthetic-control",
+    "text": "Pre-treatment fit diagnostics are mandatory before interpreting synthetic control treatment effects in mobility studies."
+  },
+  {
+    "id": "extra-004",
+    "topic": "causal-inference",
+    "region": "hubei",
+    "method": "synthetic-control",
+    "text": "Synthetic controls for Yichang infrastructure projects should exclude cities with simultaneous Three Gorges resettlement shocks."
+  },
+  {
+    "id": "extra-005",
+    "topic": "forecasting",
+    "region": "general",
+    "method": "stgcn",
+    "text": "Graph convolution depth should be tuned; overly deep ST-GCN stacks over-smooth spatial signals on sparse provincial networks."
+  },
+  {
+    "id": "extra-006",
+    "topic": "forecasting",
+    "region": "hubei",
+    "method": "scenario-simulation",
+    "text": "Medium-intensity Hubei scenarios assume coordinated industrial park rollout along the Wuhan–Xiangyang corridor."
+  },
+  {
+    "id": "extra-007",
+    "topic": "network-analysis",
+    "region": "general",
+    "method": "louvain",
+    "text": "Community stability across years indicates durable functional regions rather than temporary shock-driven groupings."
+  },
+  {
+    "id": "extra-008",
+    "topic": "network-analysis",
+    "region": "hubei",
+    "method": "centrality",
+    "text": "Huanggang's gateway role links Wuhan with eastern Hubei counties through commuter and logistics flows."
+  },
+  {
+    "id": "extra-009",
+    "topic": "reporting",
+    "region": "general",
+    "method": "reporting",
+    "text": "Executive summaries in planning reports should lead with corridor priorities and service gaps before methodological detail."
+  },
+  {
+    "id": "extra-010",
+    "topic": "agent",
+    "region": "general",
+    "method": "rag",
+    "text": "Hybrid retrieval combining BM25 and dense vectors improves recall for planning queries with both technical terms and geographic names."
+  },
+  {
+    "id": "extra-011",
+    "topic": "urban-science",
+    "region": "national",
+    "method": "urban-science",
+    "text": "Return migration after Spring Festival carries information about short-term labor market shocks in destination cities."
+  },
+  {
+    "id": "extra-012",
+    "topic": "urban-science",
+    "region": "hubei",
+    "method": "urban-science",
+    "text": "Wuhan's university cluster generates seasonal student migration pulses distinct from permanent relocation flows."
+  },
+  {
+    "id": "extra-013",
+    "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
+    "text": "Mean reciprocal rank complements Recall@k when eval sets contain multiple acceptable supporting documents."
+  },
+  {
+    "id": "extra-014",
+    "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
+    "text": "Human review of top retrieved passages remains necessary for high-stakes planning recommendations."
+  },
+  {
+    "id": "extra-015",
+    "topic": "macro-structure",
+    "region": "national",
+    "method": "network-analysis",
+    "text": "Coastal province networks show tighter inter-city coupling than inland provinces with sparse populations."
+  },
+  {
+    "id": "extra-016",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "difference-in-differences",
+    "text": "Parallel-trends violations in mobility DiD often appear when control cities receive correlated investment shocks."
+  },
+  {
+    "id": "extra-017",
+    "topic": "forecasting",
+    "region": "national",
+    "method": "gravity-model",
+    "text": "Distance decay parameters estimated on national OD tables differ materially from provincial sub-networks."
+  },
+  {
+    "id": "extra-018",
+    "topic": "network-analysis",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "Peripheral Hubei counties with low total flow but rising growth rates are early signals of corridor extension."
+  },
+  {
+    "id": "extra-019",
+    "topic": "reporting",
+    "region": "hubei",
+    "method": "reporting",
+    "text": "Cross-department planning workshops in Hubei should align transport, housing, and industrial policy using shared flow dashboards."
+  },
+  {
+    "id": "extra-020",
+    "topic": "agent",
+    "region": "general",
+    "method": "react",
+    "text": "Tool schemas should expose city-pair, policy year, and region arguments explicitly to reduce planner parsing errors."
+  },
+  {
+    "id": "extra-021",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "Wuhan's primate-city dominance in Hubei is moderated by polycentric investments in Xiangyang and Yichang."
+  },
+  {
+    "id": "extra-022",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "County-level flows into Wuhan peak after harvest seasons in surrounding agricultural belts."
+  },
+  {
+    "id": "extra-023",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "synthetic-control",
+    "text": "Pre-treatment fit diagnostics are mandatory before interpreting synthetic control treatment effects in mobility studies."
+  },
+  {
+    "id": "extra-024",
+    "topic": "causal-inference",
+    "region": "hubei",
+    "method": "synthetic-control",
+    "text": "Synthetic controls for Yichang infrastructure projects should exclude cities with simultaneous Three Gorges resettlement shocks."
+  },
+  {
+    "id": "extra-025",
+    "topic": "forecasting",
+    "region": "general",
+    "method": "stgcn",
+    "text": "Graph convolution depth should be tuned; overly deep ST-GCN stacks over-smooth spatial signals on sparse provincial networks."
+  },
+  {
+    "id": "extra-026",
+    "topic": "forecasting",
+    "region": "hubei",
+    "method": "scenario-simulation",
+    "text": "Medium-intensity Hubei scenarios assume coordinated industrial park rollout along the Wuhan–Xiangyang corridor."
+  },
+  {
+    "id": "extra-027",
+    "topic": "network-analysis",
+    "region": "general",
+    "method": "louvain",
+    "text": "Community stability across years indicates durable functional regions rather than temporary shock-driven groupings."
+  },
+  {
+    "id": "extra-028",
+    "topic": "network-analysis",
+    "region": "hubei",
+    "method": "centrality",
+    "text": "Huanggang's gateway role links Wuhan with eastern Hubei counties through commuter and logistics flows."
+  },
+  {
+    "id": "extra-029",
+    "topic": "reporting",
+    "region": "general",
+    "method": "reporting",
+    "text": "Executive summaries in planning reports should lead with corridor priorities and service gaps before methodological detail."
+  },
+  {
+    "id": "extra-030",
+    "topic": "agent",
+    "region": "general",
+    "method": "rag",
+    "text": "Hybrid retrieval combining BM25 and dense vectors improves recall for planning queries with both technical terms and geographic names."
+  },
+  {
+    "id": "extra-031",
+    "topic": "urban-science",
+    "region": "national",
+    "method": "urban-science",
+    "text": "Return migration after Spring Festival carries information about short-term labor market shocks in destination cities."
+  },
+  {
+    "id": "extra-032",
+    "topic": "urban-science",
+    "region": "hubei",
+    "method": "urban-science",
+    "text": "Wuhan's university cluster generates seasonal student migration pulses distinct from permanent relocation flows."
+  },
+  {
+    "id": "extra-033",
+    "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
+    "text": "Mean reciprocal rank complements Recall@k when eval sets contain multiple acceptable supporting documents."
+  },
+  {
+    "id": "extra-034",
+    "topic": "model-evaluation",
+    "region": "general",
+    "method": "evaluation",
+    "text": "Human review of top retrieved passages remains necessary for high-stakes planning recommendations."
+  },
+  {
+    "id": "extra-035",
+    "topic": "macro-structure",
+    "region": "national",
+    "method": "network-analysis",
+    "text": "Coastal province networks show tighter inter-city coupling than inland provinces with sparse populations."
+  },
+  {
+    "id": "extra-036",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "difference-in-differences",
+    "text": "Parallel-trends violations in mobility DiD often appear when control cities receive correlated investment shocks."
+  },
+  {
+    "id": "extra-037",
+    "topic": "forecasting",
+    "region": "national",
+    "method": "gravity-model",
+    "text": "Distance decay parameters estimated on national OD tables differ materially from provincial sub-networks."
+  },
+  {
+    "id": "extra-038",
+    "topic": "network-analysis",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "Peripheral Hubei counties with low total flow but rising growth rates are early signals of corridor extension."
+  },
+  {
+    "id": "extra-039",
+    "topic": "reporting",
+    "region": "hubei",
+    "method": "reporting",
+    "text": "Cross-department planning workshops in Hubei should align transport, housing, and industrial policy using shared flow dashboards."
+  },
+  {
+    "id": "extra-040",
+    "topic": "agent",
+    "region": "general",
+    "method": "react",
+    "text": "Tool schemas should expose city-pair, policy year, and region arguments explicitly to reduce planner parsing errors."
+  },
+  {
+    "id": "extra-041",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "Wuhan's primate-city dominance in Hubei is moderated by polycentric investments in Xiangyang and Yichang."
+  },
+  {
+    "id": "extra-042",
+    "topic": "macro-structure",
+    "region": "hubei",
+    "method": "network-analysis",
+    "text": "County-level flows into Wuhan peak after harvest seasons in surrounding agricultural belts."
+  },
+  {
+    "id": "extra-043",
+    "topic": "causal-inference",
+    "region": "general",
+    "method": "synthetic-control",
+    "text": "Pre-treatment fit diagnostics are mandatory before interpreting synthetic control treatment effects in mobility studies."
+  },
+  {
+    "id": "extra-044",
+    "topic": "causal-inference",
+    "region": "hubei",
+    "method": "synthetic-control",
+    "text": "Synthetic controls for Yichang infrastructure projects should exclude cities with simultaneous Three Gorges resettlement shocks."
+  },
+  {
+    "id": "extra-045",
+    "topic": "forecasting",
+    "region": "general",
+    "method": "stgcn",
+    "text": "Graph convolution depth should be tuned; overly deep ST-GCN stacks over-smooth spatial signals on sparse provincial networks."
+  },
+  {
+    "id": "extra-046",
+    "topic": "forecasting",
+    "region": "hubei",
+    "method": "scenario-simulation",
+    "text": "Medium-intensity Hubei scenarios assume coordinated industrial park rollout along the Wuhan–Xiangyang corridor."
+  },
+  {
+    "id": "extra-047",
+    "topic": "network-analysis",
+    "region": "general",
+    "method": "louvain",
+    "text": "Community stability across years indicates durable functional regions rather than temporary shock-driven groupings."
   }
 ]
