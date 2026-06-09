@@ -3,14 +3,14 @@ import os
 from flask import Flask, jsonify, request
 
 from flowmind.agent.core_agent import CoreAgent
-from flowmind.rag.simple_rag import FaissRagDemo
+from flowmind.rag.simple_rag import build_rag
 from flowmind.tools.flow_tools import FlowTools
 
 
 app = Flask(__name__)
 agent = CoreAgent()
 tools = FlowTools()
-rag = FaissRagDemo.from_json(os.getenv("RAG_DOCUMENT_PATH", "config/rag_documents.json"))
+rag = build_rag(os.getenv("RAG_DOCUMENT_PATH", "config/rag_documents.json"))
 
 
 @app.after_request

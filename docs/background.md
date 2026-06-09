@@ -19,9 +19,9 @@ Urban Constellation uses a model-brain-plus-domain-tools Agent architecture:
 
 ## Portfolio Scope
 
-This repository is a portfolio version. It prioritizes a runnable demo, a minimal backend control-flow prototype, technical narrative, and competition context.
+This repository is a portfolio version. It prioritizes a runnable demo, a backend control-flow prototype, technical narrative, and competition context.
 
-What is included: static frontend demo, rule-based Agent loop, TF-IDF retrieval demo, hash-based mock tools, and Flask wiring.
+What is included: static frontend demo, ReAct Agent loop (Ollama or rule-based planner), embedding RAG with TF-IDF fallback, hash-based mock tools, Flask API, unit tests, GitHub Actions CI, Dockerfile, and Makefile.
 
-What is excluded: real model inference, embedding hybrid RAG, real migration corpora, unit tests, CI, Docker, and one-click bootstrap scripts. Full raw data, training weights, oversized videos, and raw submission packages are also excluded.
+What is excluded: fine-tuned model weights, STGCN/SCM/Louvain production models, and real migration corpora. Full raw data, training weights, oversized videos, and raw submission packages are also excluded.
 

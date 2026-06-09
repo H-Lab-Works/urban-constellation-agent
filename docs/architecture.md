@@ -16,10 +16,11 @@ User query
 | Layer | Competition proposal | Portfolio prototype in this repo |
 | --- | --- | --- |
 | Frontend demo | Maps, controls, metrics, and AI-style reports | Static JS demo with mock narrative outputs |
-| Agent planner | Domain LLM planner for tool calling | Rule-based keyword planner with injectable interface |
-| RAG knowledge layer | Migration corpora + hybrid retrieval | 12 English planning notes + TF-IDF + FAISS |
+| Agent planner | Domain LLM planner for tool calling | OllamaPlanner when available; RuleBasedPlanner fallback |
+| RAG knowledge layer | Migration corpora + hybrid retrieval | 28 planning notes + embedding RAG (TF-IDF fallback) |
 | Tool layer | STGCN, SCM, Louvain, multi-scale analysis | SHA-256 hash pseudo-random mock tools |
 | Report layer | Planning recommendations from model outputs | Template-style summaries from mock observations |
+| Quality | CI, tests, containerization | pytest suite, GitHub Actions, Dockerfile, Makefile |
 
 ## Model Proposal
 
@@ -35,17 +36,13 @@ The technical proposal used the following configuration as the target direction:
 
 ## Prototype Boundary
 
-`prototype/` demonstrates backend control flow only:
+`prototype/` demonstrates backend control flow:
 
 - ReAct loop with tool observations appended to message history
-- Rule-based planner, not real model inference
+- Swappable planner backend (Ollama or rule-based fallback)
 - Hash-based mock tools, not trained models
-- TF-IDF retrieval over 12 hand-written planning notes, not embedding hybrid RAG
+- Embedding or TF-IDF retrieval over a 28-note planning corpus
 - Flask API for local inspection
+- Unit tests, GitHub Actions CI, Docker, and Makefile
 
-Missing for a reproducible research prototype:
-
-- Unit tests
-- CI
-- Docker or one-click startup scripts
-- Production dependencies beyond the 4 packages in `requirements.txt`
+Not included: raw migration data and trained model weights.
