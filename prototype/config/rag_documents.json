@@ -1,0 +1,63 @@
+[
+  {
+    "id": "hubei-core",
+    "topic": "macro-structure",
+    "text": "Hubei's mobility network is centered on Wuhan, with Xiangyang and Yichang acting as major sub-centers."
+  },
+  {
+    "id": "hubei-potential-nodes",
+    "topic": "macro-structure",
+    "text": "Xiaogan, Jingzhou, and Huanggang can be interpreted as potential nodes because they connect secondary flows to the Wuhan core area."
+  },
+  {
+    "id": "policy-evaluation",
+    "topic": "causal-inference",
+    "text": "A railway station opening can be evaluated by comparing observed migration flow against a counterfactual baseline."
+  },
+  {
+    "id": "synthetic-control",
+    "topic": "causal-inference",
+    "text": "Synthetic control creates a weighted counterfactual path from comparable city pairs before policy implementation."
+  },
+  {
+    "id": "scenario-simulation",
+    "topic": "forecasting",
+    "text": "Future planning scenarios can estimate how investment intensity changes inter-city mobility demand."
+  },
+  {
+    "id": "stgcn-forecasting",
+    "topic": "forecasting",
+    "text": "Spatio-temporal graph convolution can model both temporal trends and network adjacency when forecasting mobility flows."
+  },
+  {
+    "id": "community-detection",
+    "topic": "network-analysis",
+    "text": "Louvain community detection is useful for identifying cohesive urban clusters in a migration network."
+  },
+  {
+    "id": "multiscale-analysis",
+    "topic": "network-analysis",
+    "text": "Changing the community-resolution parameter reveals city-network patterns at provincial, regional, and corridor scales."
+  },
+  {
+    "id": "planning-report",
+    "topic": "reporting",
+    "text": "A planning report should connect model outputs to transport, industry, and public-service allocation recommendations."
+  },
+  {
+    "id": "agent-tool-use",
+    "topic": "agent",
+    "text": "The Agent should convert natural-language planning questions into explicit tool calls, observe tool outputs, and then produce a grounded answer."
+  },
+  {
+    "id": "rag-grounding",
+    "topic": "agent",
+    "text": "RAG grounding reduces unsupported conclusions by retrieving relevant planning knowledge before the final response."
+  },
+  {
+    "id": "frontend-demo",
+    "topic": "interface",
+    "text": "The frontend demo presents maps, rankings, policy controls, scenario sliders, and AI-style narrative reports for portfolio review."
+  }
+]
+

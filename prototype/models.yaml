@@ -1,18 +1,27 @@
-# configs/models.yaml
+# Prototype model configuration.
+# These values document the intended production direction; the checked-in Python
+# prototype uses deterministic mock tools so it can run without model weights.
 
-# STGCN模型参数
 stgcn:
-  n_his: 12        # 使用过去12个时间步的数据
-  n_pred: 3        # 预测未来3个时间步
-  n_route: 300     # 假设有300个城市节点 (需要根据你的数据调整)
-  n_channel: [1, 16, 32, 64, 32, 128]
+  history_steps: 12
+  prediction_steps: 3
+  city_nodes: 300
+  channels: [1, 16, 32, 64, 32, 128]
   learning_rate: 0.001
   epochs: 50
   batch_size: 16
   model_save_path: "trained_models/stgcn_model.pth"
 
-# SCM模型参数
-scm:
-  treatment_identifier: 'Wuhan' # 示例
-  outcome_var: 'value'
-  # 其他SCM需要的参数...
+synthetic_control:
+  outcome_variable: "flow_index"
+  pre_policy_min_periods: 2
+  default_policy_year: 2021
+
+rag:
+  document_path: "config/rag_documents.json"
+  top_k: 3
+
+api:
+  host: "127.0.0.1"
+  port: 5050
+

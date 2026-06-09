@@ -2,7 +2,7 @@
 
 An urban mobility analysis and AI decision-support Agent prototype for smart city planning. The project explores a human-centered planning workflow: translating migration-flow patterns into interactive maps, city-pair prediction, policy-effect evaluation, future scenario simulation, and macro urban-structure insight.
 
-This repository is a private portfolio version of the competition project **Urban Constellation**. It focuses on a runnable frontend demo, demo video, a minimal ReAct/RAG prototype, technical narrative, and clearly scoped mock tooling.
+This repository is a portfolio-ready version of **Urban Constellation**. It focuses on a runnable frontend demo, a selected demo video, a minimal ReAct/RAG backend prototype, technical narrative, and clearly scoped mock tooling.
 
 ## Highlights
 
@@ -15,7 +15,7 @@ This repository is a private portfolio version of the competition project **Urba
 
 ## Demo
 
-![Urban Constellation demo screenshot](assets/demo-screenshot.png)
+[Watch the full demo video](assets/demo-video.mp4).
 
 ### Run Locally
 
@@ -56,12 +56,6 @@ The demo uses:
 - If the map does not load, do not open the file with `file://`; use the local HTTP server above.
 - If the browser says the port is unavailable, switch from `8000` to `8080` or another free port.
 
-## Demo Video
-
-The selected demo video is kept outside Git history to avoid storing large binary files directly in the repository. It can be attached later as a GitHub release asset when a stable upload path is available.
-
-Slide decks, the larger 409MB supplementary video, and oversized/raw submission packages are excluded to keep the repository usable.
-
 ## Technical Direction
 
 The competition design used an Agent architecture:
@@ -81,7 +75,7 @@ Planned model stack in the technical proposal:
 - Retrieval: hybrid retrieval with vector search and keyword search
 - Tools: flow prediction, causal-effect evaluation, community detection, multi-scale network analysis
 
-The Python code in `prototype/` is intentionally marked as an architecture prototype. It preserves the Agent and model-interface design, but should not be represented as a complete production training pipeline.
+The Python code in `prototype/` is a runnable backend prototype. It uses deterministic mock tools instead of production models, but the ReAct control flow, retrieval flow, and Flask endpoints are real.
 
 ## Backend Prototype
 
@@ -106,6 +100,12 @@ Run the minimal FAISS RAG example:
 PYTHONPATH=. python3 flowmind/rag/simple_rag.py "How should Hubei's urban structure be analyzed?"
 ```
 
+Run the deterministic simulation example:
+
+```bash
+PYTHONPATH=. python3 flowmind/models/simulator.py --origin Wuhan --dest Xiangyang --baseline 70 --strength medium
+```
+
 Run the Flask API:
 
 ```bash
@@ -120,14 +120,22 @@ curl -X POST http://127.0.0.1:5050/api/agent \
   -d '{"query":"Analyze Hubei macro urban structure"}'
 ```
 
+Example RAG request:
+
+```bash
+curl -X POST http://127.0.0.1:5050/api/rag \
+  -H 'Content-Type: application/json' \
+  -d '{"query":"How should Hubei mobility communities be interpreted?","top_k":3}'
+```
+
 ## Repository Structure
 
 ```text
 .
 ├── demo/          # Runnable static front-end demo
 ├── docs/          # Background, architecture, sample output, and competition notes
-├── assets/        # README screenshot and portfolio assets
-└── prototype/     # Runnable mock Agent, RAG, and Flask prototype
+├── assets/        # Demo video and portfolio assets
+└── prototype/     # Runnable mock Agent, RAG, simulation, and Flask prototype
 ```
 
 ## My Contribution
@@ -144,4 +152,6 @@ The project won a third prize in the China Graduate Smart City Technology and Cr
 
 ## Notes
 
-Large model files, raw migration data, oversized videos, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
+Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
+
+Note: `assets/demo-video.mp4` is the full supplementary demo video and is larger than GitHub's regular 100MB file limit. Keep it local, upload it through Git LFS, or publish it as a release asset before making the repository public.

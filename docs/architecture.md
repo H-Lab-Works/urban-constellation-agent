@@ -35,5 +35,4 @@ The technical proposal used the following configuration as the target direction:
 
 ## Prototype Boundary
 
-`prototype/` preserves interface sketches and simplified logic from the competition handoff package. Some model functions are placeholders, so the production-quality artifact in this repo is the static interactive demo plus the documented architecture.
-
+`prototype/` is runnable end to end with deterministic mock tools. It is not a production model-training stack, but it does demonstrate the intended backend control flow: ReAct planning, tool execution, observation handling, FAISS retrieval, and Flask API exposure.
