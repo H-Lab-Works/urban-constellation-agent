@@ -1,7 +1,8 @@
 # Demo Video
 
-- `demo-video-preview.mp4` — compressed 480p preview (~7MB), embedded in README for in-page playback.
+- Public demo: https://www.bilibili.com/video/BV1WyEm6WEut/
 - `demo-video.mp4` — original full-quality video (~409MB), kept local only.
+- `demo-video-preview.mp4` — compressed local copy for re-upload or backup.
 
 To regenerate the preview:
 

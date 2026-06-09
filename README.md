@@ -15,9 +15,9 @@ This repository is a portfolio-ready version of **Urban Constellation**. It focu
 
 ## Demo
 
-<video controls width="100%" src="https://github.com/H-Lab-Works/urban-constellation-agent/raw/main/assets/demo-video-preview.mp4"></video>
+[![Watch on Bilibili](https://img.shields.io/badge/Demo-Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1WyEm6WEut/)
 
-Compressed 480p preview (~7MB) for GitHub README playback. The original full-quality video stays local as `assets/demo-video.mp4`.
+**[▶ Watch the full demo video on Bilibili](https://www.bilibili.com/video/BV1WyEm6WEut/)**
 
 ### Run Locally
 
@@ -156,4 +156,4 @@ The project won a third prize in the China Graduate Smart City Technology and Cr
 
 Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
 
-Note: The original `assets/demo-video.mp4` (~409MB) is kept locally. The committed `assets/demo-video-preview.mp4` is a compressed version for GitHub README preview.
+Note: The demo video is hosted on Bilibili. Local copies under `assets/` are kept for editing and re-upload only.
