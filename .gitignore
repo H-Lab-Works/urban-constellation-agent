@@ -9,7 +9,7 @@ __pycache__/
 # Large or private raw assets
 *.zip
 *.mp4
-!assets/demo-video.mp4
+!assets/demo-video-preview.mp4
 *.mov
 *.pptx
 *.psb
