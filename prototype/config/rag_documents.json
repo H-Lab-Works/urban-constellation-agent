@@ -2,62 +2,141 @@
   {
     "id": "hubei-core",
     "topic": "macro-structure",
-    "text": "Hubei's mobility network is centered on Wuhan, with Xiangyang and Yichang acting as major sub-centers."
+    "text": "Hubei's mobility network is centered on Wuhan, with Xiangyang and Yichang acting as major sub-centers that anchor western and northern corridors."
   },
   {
     "id": "hubei-potential-nodes",
     "topic": "macro-structure",
-    "text": "Xiaogan, Jingzhou, and Huanggang can be interpreted as potential nodes because they connect secondary flows to the Wuhan core area."
+    "text": "Xiaogan, Jingzhou, and Huanggang function as potential nodes in the Hubei network because they relay secondary flows between the Wuhan core and peripheral counties."
+  },
+  {
+    "id": "hubei-corridor",
+    "topic": "macro-structure",
+    "text": "The Wuhan–Xiangyang–Xi'an corridor is a major inter-provincial flow channel; strengthening it supports both intra-provincial integration and national east–west connectivity."
+  },
+  {
+    "id": "hubei-three-gorges",
+    "topic": "macro-structure",
+    "text": "The Three Gorges area introduces spatial discontinuity in western Hubei; Yichang's sub-center role partly compensates by bridging eastern Hubei flows with the Chongqing–Chengdu urban cluster."
   },
   {
     "id": "policy-evaluation",
     "topic": "causal-inference",
-    "text": "A railway station opening can be evaluated by comparing observed migration flow against a counterfactual baseline."
+    "text": "A railway station opening can be evaluated by comparing observed post-policy migration flow against a synthetic counterfactual baseline constructed from comparable unexposed city pairs."
   },
   {
     "id": "synthetic-control",
     "topic": "causal-inference",
-    "text": "Synthetic control creates a weighted counterfactual path from comparable city pairs before policy implementation."
+    "text": "Synthetic control builds a weighted average of donor city-pair trajectories from the pre-policy period; the difference between the treated unit and this synthetic path after policy onset estimates the treatment effect."
+  },
+  {
+    "id": "diff-in-diff",
+    "topic": "causal-inference",
+    "text": "Difference-in-differences compares the pre–post change in treated city pairs to the same change in untreated control pairs, assuming parallel trends would have held absent the policy."
+  },
+  {
+    "id": "confounders",
+    "topic": "causal-inference",
+    "text": "Common confounders in urban mobility studies include concurrent economic shocks, simultaneous infrastructure investments in adjacent corridors, and demographic compositional changes unrelated to the focal policy."
   },
   {
     "id": "scenario-simulation",
     "topic": "forecasting",
-    "text": "Future planning scenarios can estimate how investment intensity changes inter-city mobility demand."
+    "text": "Future planning scenarios translate investment intensity—low, medium, or high—into multiplicative adjustment factors applied to a baseline flow forecast, illustrating sensitivity rather than exact prediction."
   },
   {
     "id": "stgcn-forecasting",
     "topic": "forecasting",
-    "text": "Spatio-temporal graph convolution can model both temporal trends and network adjacency when forecasting mobility flows."
+    "text": "Spatio-temporal graph convolution networks capture both the temporal autocorrelation of city-pair flows and the spatial autocorrelation induced by network adjacency when forecasting future mobility demand."
+  },
+  {
+    "id": "gravity-model",
+    "topic": "forecasting",
+    "text": "The gravity model predicts inter-city flows as proportional to the product of origin and destination populations and inversely proportional to distance; it serves as a parametric baseline for more complex models."
+  },
+  {
+    "id": "radiation-model",
+    "topic": "forecasting",
+    "text": "The radiation model estimates migration by modeling competition from intermediate population masses between origin and destination, offering a parameter-free alternative to the gravity model."
   },
   {
     "id": "community-detection",
     "topic": "network-analysis",
-    "text": "Louvain community detection is useful for identifying cohesive urban clusters in a migration network."
+    "text": "Louvain community detection identifies cohesive urban clusters in a migration network by maximising modularity; at provincial scale it typically recovers one dominant core cluster and several peripheral sub-clusters."
   },
   {
     "id": "multiscale-analysis",
     "topic": "network-analysis",
-    "text": "Changing the community-resolution parameter reveals city-network patterns at provincial, regional, and corridor scales."
+    "text": "Varying the Louvain resolution parameter from fine to coarse reveals city-network structure at corridor, regional, and provincial scales, exposing both tight local communities and looser supra-regional groupings."
+  },
+  {
+    "id": "network-centrality",
+    "topic": "network-analysis",
+    "text": "Betweenness centrality quantifies how often a city lies on shortest paths between all other city pairs; high-betweenness cities are strategic relay nodes whose disruption would fragment regional connectivity."
+  },
+  {
+    "id": "core-periphery",
+    "topic": "network-analysis",
+    "text": "Core-periphery decomposition distinguishes densely connected hub cities from sparsely connected peripheral ones; the Hubei network exhibits a clear single-core structure with Wuhan as the dominant hub."
   },
   {
     "id": "planning-report",
     "topic": "reporting",
-    "text": "A planning report should connect model outputs to transport, industry, and public-service allocation recommendations."
+    "text": "An effective urban planning report connects model outputs to actionable recommendations for transport investment, industrial relocation incentives, and public-service allocation across city tiers."
+  },
+  {
+    "id": "transport-recommendation",
+    "topic": "reporting",
+    "text": "High-flow corridors identified by network analysis should be prioritised for rail capacity upgrades; low-flow but high-betweenness corridors may warrant targeted feeder services to prevent bottlenecks."
+  },
+  {
+    "id": "service-allocation",
+    "topic": "reporting",
+    "text": "Cities with high inflow but limited public-service capacity face rapid congestion externalities; pre-emptive healthcare, education, and housing investment should be scaled to projected flow absorption rates."
   },
   {
     "id": "agent-tool-use",
     "topic": "agent",
-    "text": "The Agent should convert natural-language planning questions into explicit tool calls, observe tool outputs, and then produce a grounded answer."
+    "text": "The Agent converts natural-language planning questions into explicit tool calls using ReAct reasoning; it observes tool outputs before each subsequent step and terminates when a grounded answer can be produced."
   },
   {
     "id": "rag-grounding",
     "topic": "agent",
-    "text": "RAG grounding reduces unsupported conclusions by retrieving relevant planning knowledge before the final response."
+    "text": "RAG grounding reduces hallucinated planning conclusions by prepending retrieved domain evidence to the generation context before the model produces its final response."
   },
   {
-    "id": "frontend-demo",
-    "topic": "interface",
-    "text": "The frontend demo presents maps, rankings, policy controls, scenario sliders, and AI-style narrative reports for portfolio review."
+    "id": "tool-chaining",
+    "topic": "agent",
+    "text": "Complex planning queries may require chained tool calls—for example, first predicting baseline flow, then simulating a policy scenario on top of that prediction—which a multi-step ReAct loop handles naturally."
+  },
+  {
+    "id": "inter-city-migration",
+    "topic": "urban-science",
+    "text": "Inter-city migration flows in China are primarily driven by wage differentials, housing costs, educational and healthcare quality gaps, and administrative hukou policies that constrain permanent settlement."
+  },
+  {
+    "id": "polycentric-development",
+    "topic": "urban-science",
+    "text": "Polycentric urban development—building up secondary sub-centers rather than concentrating all growth in the primate city—can reduce congestion, lower inequality across city tiers, and improve regional resilience."
+  },
+  {
+    "id": "shrinking-cities",
+    "topic": "urban-science",
+    "text": "Persistent net outflow from small and mid-sized cities signals shrinkage risk; planners should model long-run demographic trajectories before committing to new infrastructure that will serve a declining population base."
+  },
+  {
+    "id": "data-limitations",
+    "topic": "urban-science",
+    "text": "Mobility datasets derived from mobile-phone signalling or platform trip records may underrepresent elderly and rural populations and overweight short-term travel; long-term settlement flows require complementary census or registration data."
+  },
+  {
+    "id": "evaluation-metrics",
+    "topic": "model-evaluation",
+    "text": "Forecasting models for city-pair flows are evaluated by MAE, RMSE, and MAPE on held-out test periods; causal estimates should additionally report confidence intervals and placebo test results."
+  },
+  {
+    "id": "validation-approach",
+    "topic": "model-evaluation",
+    "text": "A forward-chaining cross-validation scheme—training on earlier years and testing on later ones—respects the temporal order of mobility data and avoids leaking future information into the model."
   }
 ]
-

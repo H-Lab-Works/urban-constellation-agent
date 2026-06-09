@@ -1,4 +1,17 @@
+# Core backend
 faiss-cpu
 flask
 numpy
 scikit-learn
+
+# Unit tests
+pytest
+
+# Embedding RAG (dense retrieval, ~90 MB model download on first use).
+# Install to enable EmbeddingRag; the prototype falls back to TfidfRag without it.
+sentence-transformers
+
+# Real LLM inference (optional).
+# Install and run `ollama pull qwen2:7b` to enable OllamaPlanner.
+# The prototype falls back to RuleBasedPlanner without it.
+# ollama
