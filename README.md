@@ -178,5 +178,3 @@ The project won a third prize in the China Graduate Smart City Technology and Cr
 ## Notes
 
 Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
-
-The demo video is hosted on [Bilibili](https://www.bilibili.com/video/BV1WyEm6WEut/). Local copies under `assets/` are kept for editing and re-upload only.
