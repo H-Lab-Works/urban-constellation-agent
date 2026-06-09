@@ -1,6 +1,6 @@
 <div align="center">
 
-![Urban Constellation banner](assets/banner.png)
+<img src="assets/banner.png" alt="Urban Constellation banner" width="100%" />
 
 # Urban Constellation Agent
 
@@ -11,7 +11,7 @@
 [![Flask](https://img.shields.io/badge/Flask-API-000000?style=for-the-badge&logo=flask&logoColor=white)](prototype/flowmind/api.py)
 [![AI Agent](https://img.shields.io/badge/AI-Agent-7C3AED?style=for-the-badge)](prototype/flowmind/agent/core_agent.py)
 [![RAG](https://img.shields.io/badge/RAG-FAISS-059669?style=for-the-badge)](prototype/flowmind/rag/simple_rag.py)
-[![Frontend](https://img.shields.io/badge/Demo-JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](demo/)
+[![JavaScript Demo](https://img.shields.io/badge/JavaScript-Demo-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](demo/index.html)
 [![Qwen](https://img.shields.io/badge/LLM-Qwen--7B-6D28D9?style=for-the-badge)](docs/architecture.md)
 [![Portfolio](https://img.shields.io/badge/Type-Portfolio-64748B?style=for-the-badge)](docs/background.md)
 [![Demo](https://img.shields.io/badge/Video-Bilibili-00A1D6?style=for-the-badge&logo=bilibili&logoColor=white)](https://www.bilibili.com/video/BV1WyEm6WEut/)
