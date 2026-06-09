@@ -1,0 +1,4 @@
+faiss-cpu
+flask
+numpy
+scikit-learn

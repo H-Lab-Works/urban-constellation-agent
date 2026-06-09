@@ -1,0 +1,31 @@
+.DS_Store
+__MACOSX/
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+.venv/
+
+# Large or private raw assets
+*.zip
+*.mp4
+!media/demo-video.mp4
+*.mov
+*.pptx
+*.psb
+*.joblib
+*.pth
+*.pt
+*.ckpt
+*.onnx
+historical_data.csv
+trained_models/
+raw_data/
+private/
+
+# Local runtime files
+.env
+.venv/
+venv/
+node_modules/
+.cache/

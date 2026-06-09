@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowMind | 城市星图</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-mark" aria-label="FlowMind logo">FM</div>
+                <h2>FlowMind</h2>
+                <p class="subtitle">城市星图</p>
+            </div>
+            <div class="sidebar-divider"></div>
+            <nav class="sidebar-nav">
+                <label class="radio-option">
+                    <input type="radio" name="page" value="智能预测板块" checked>
+                    <span>智能预测板块</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="page" value="决策建议板块">
+                    <span>决策建议板块</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="page" value="未来情景模拟">
+                    <span>未来情景模拟</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="page" value="宏观结构洞察">
+                    <span>宏观结构洞察</span>
+                </label>
+            </nav>
+            <div class="sidebar-footer">
+                <p>由 Star 团队倾力打造</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Page: 智能预测板块 -->
+            <div id="page-智能预测板块" class="page-content active">
+                <h1 class="page-title">智能预测板块</h1>
+                <div class="content-divider"></div>
+                
+                <div class="grid-2-1">
+                    <div class="panel">
+                        <h3>全国城市流动网络可视化</h3>
+                        <div id="main-map-container"></div>
+                    </div>
+                    <div class="panel">
+                        <h3>城市引力核心榜单</h3>
+                        <div id="ranking-container">
+                            <div>
+                                <h4 style="margin-top: 0;">Top 10 迁入核心城市</h4>
+                                <div id="inflow-ranking"></div>
+                            </div>
+                            <div>
+                                <h4>Top 10 迁出核心城市</h4>
+                                <div id="outflow-ranking"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-divider"></div>
+                
+                <div class="panel">
+                    <h3>指定城市对未来流动预测</h3>
+                    <div class="prediction-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>起点城市</label>
+                                <select id="pred-city-a">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>终点城市</label>
+                                <select id="pred-city-b">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>预测年份</label>
+                                <input type="number" id="pred-year" min="2024" max="2035" value="2024">
+                            </div>
+                            <div class="form-group">
+                                <button id="run-pred-btn" class="btn-primary">🚀 启动多模型预测</button>
+                            </div>
+                        </div>
+                        <div id="prediction-results" class="hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page: 决策建议板块 -->
+            <div id="page-决策建议板块" class="page-content">
+                <h1 class="page-title">决策建议板块</h1>
+                <div class="content-divider"></div>
+                
+                <div class="grid-1-2">
+                    <div class="panel">
+                        <h3>评估参数设置</h3>
+                        <div class="form-vertical">
+                            <div class="form-group">
+                                <label>起点城市</label>
+                                <select id="eval-city-a">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>终点城市</label>
+                                <select id="eval-city-b">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>决策实施年份</label>
+                                <input type="number" id="eval-year" min="2019" max="2023" value="2020">
+                            </div>
+                            <div class="form-group">
+                                <label>决策名称</label>
+                                <input type="text" id="eval-policy" placeholder="例如：郑渝高铁襄阳东站开通">
+                            </div>
+                            <button id="run-eval-btn" class="btn-primary">🔬 启动效能评估</button>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div id="evaluation-results" class="hidden">
+                            <h3 id="eval-title"></h3>
+                            <div class="grid-2">
+                                <div>
+                                    <h4>核心指标与效果对比</h4>
+                                    <div id="eval-metrics"></div>
+                                    <div id="eval-chart"></div>
+                                </div>
+                                <div>
+                                    <h4>Star AI 智能决策建议</h4>
+                                    <div id="eval-report"></div>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--spacing-lg);">
+                                <h4>决策效果模拟图</h4>
+                                <div id="eval-simulation-map" class="chart-container" style="height: 400px;"></div>
+                                <div id="eval-comparison-chart" class="chart-container" style="height: 250px; margin-top: var(--spacing-md);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page: 未来情景模拟 -->
+            <div id="page-未来情景模拟" class="page-content">
+                <h1 class="page-title">未来情景模拟</h1>
+                <div class="content-divider"></div>
+                
+                <div class="grid-1-2">
+                    <div class="panel">
+                        <h3>模拟参数设置</h3>
+                        <div class="form-vertical">
+                            <div class="form-group">
+                                <label>起点城市</label>
+                                <select id="sim-city-a">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>终点城市</label>
+                                <select id="sim-city-b">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>模拟年份</label>
+                                <input type="number" id="sim-year" min="2026" max="2035" value="2026">
+                            </div>
+                            <div class="form-group">
+                                <label>未来规划设想</label>
+                                <input type="text" id="sim-policy" placeholder="例如：建设科创走廊">
+                            </div>
+                            <div class="form-group">
+                                <label>规划投入强度</label>
+                                <div class="slider-container">
+                                    <input type="range" id="sim-strength" min="0" max="2" value="1" step="1">
+                                    <div class="slider-labels">
+                                        <span>弱</span>
+                                        <span>中</span>
+                                        <span>强</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="run-sim-btn" class="btn-primary">🌌 启动未来情景模拟</button>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div id="simulation-results" class="hidden">
+                            <h3 id="sim-title"></h3>
+                            <div class="grid-2">
+                                <div>
+                                    <h4>核心指标与要素分析</h4>
+                                    <div id="sim-metrics"></div>
+                                    <div id="sim-wordcloud"></div>
+                                </div>
+                                <div>
+                                    <h4>Star AI 前瞻性战略报告</h4>
+                                    <div id="sim-report"></div>
+                                </div>
+                            </div>
+                            <div style="margin-top: var(--spacing-lg);">
+                                <h4>未来情景模拟图</h4>
+                                <div id="sim-simulation-map" class="chart-container" style="height: 400px;"></div>
+                                <div id="sim-trend-chart" class="chart-container" style="height: 250px; margin-top: var(--spacing-md);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page: 宏观结构洞察 -->
+            <div id="page-宏观结构洞察" class="page-content">
+                <h1 class="page-title">宏观结构洞察 - AI智能体自主分析</h1>
+                <div class="content-divider"></div>
+                
+                <!-- AI Query Input Section -->
+                <div class="panel macro-insight-input">
+                    <h3>🤖 AI智能体对话界面</h3>
+                    <div class="ai-chat-container">
+                        <div class="form-group">
+                            <label>请输入您的分析需求（支持自然语言）</label>
+                            <div class="input-with-button">
+                                <input type="text" id="macro-query" placeholder="例如：请分析湖北省的城镇体系结构" value="请分析湖北省的城镇体系结构">
+                                <button id="run-macro-analysis" class="btn-primary">🚀 启动智能分析</button>
+                            </div>
+                        </div>
+                        <div class="ai-thinking-process hidden" id="ai-thinking-process">
+                            <div class="thinking-header">
+                                <span class="thinking-icon">🧠</span>
+                                <span>AI智能体思考过程</span>
+                            </div>
+                            <div class="thinking-steps" id="thinking-steps"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analysis Results Section -->
+                <div id="macro-results" class="hidden">
+                    <div class="content-divider"></div>
+                    
+                    <!-- Network Visualization & Community Detection -->
+                    <div class="grid-2">
+                        <div class="panel">
+                            <h3>🌐 城市网络骨架图</h3>
+                            <div class="visual-description">基于时空流LISA算法的城市连接强度分析</div>
+                            <div id="network-skeleton-map" class="chart-container-large"></div>
+                            <div class="map-legend">
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #ff6b6b;"></span>
+                                    <span>核心城市</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #4ecdc4;"></span>
+                                    <span>副中心城市</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #95e1d3;"></span>
+                                    <span>潜力城市</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background: #888;"></span>
+                                    <span>一般城市</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel">
+                            <h3>🔍 社群发现与层级结构</h3>
+                            <div class="visual-description">动态Louvain算法自动识别城市圈层</div>
+                            <div id="community-detection-chart" class="chart-container-large"></div>
+                            <div id="hierarchy-analysis" class="hierarchy-container"></div>
+                        </div>
+                    </div>
+
+                    <div class="content-divider"></div>
+
+                    <!-- Multi-scale Analysis -->
+                    <div class="panel">
+                        <h3>🔬 多尺度结构分析</h3>
+                        <div class="visual-description">从宏观战略到区域细节的全方位透视</div>
+                        <div class="scale-control">
+                            <label>分析粒度：</label>
+                            <div class="scale-buttons">
+                                <button class="scale-btn active" data-scale="1">粗粒度（省级）</button>
+                                <button class="scale-btn" data-scale="2">中粒度（区域）</button>
+                                <button class="scale-btn" data-scale="3">细粒度（城市群）</button>
+                            </div>
+                        </div>
+                        <div id="multiscale-visualization" class="chart-container-large"></div>
+                    </div>
+
+                    <div class="content-divider"></div>
+
+                    <!-- City Hierarchy & Data-Driven Classification -->
+                    <div class="grid-2">
+                        <div class="panel">
+                            <h3>📊 数据驱动的城市等级划分</h3>
+                            <div id="city-hierarchy-chart" class="chart-container-medium"></div>
+                            <div id="hierarchy-stats" class="stats-grid"></div>
+                        </div>
+                        
+                        <div class="panel">
+                            <h3>🎯 关键节点城市识别</h3>
+                            <div id="key-cities-analysis" class="key-cities-container"></div>
+                        </div>
+                    </div>
+
+                    <div class="content-divider"></div>
+
+                    <!-- AI Generated Deep Analysis Report -->
+                    <div class="panel ai-report-panel">
+                        <h3>📝 AI深度分析报告</h3>
+                        <div class="report-meta">
+                            <span class="report-timestamp" id="report-timestamp"></span>
+                            <span class="report-badge">由 Star AI 智能体自动生成</span>
+                        </div>
+                        <div id="ai-deep-report" class="ai-report-content"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="thinking-overlay" class="hidden">
+            <div id="thinking-log"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# configs/models.yaml
+
+# STGCN模型参数
+stgcn:
+  n_his: 12        # 使用过去12个时间步的数据
+  n_pred: 3        # 预测未来3个时间步
+  n_route: 300     # 假设有300个城市节点 (需要根据你的数据调整)
+  n_channel: [1, 16, 32, 64, 32, 128]
+  learning_rate: 0.001
+  epochs: 50
+  batch_size: 16
+  model_save_path: "trained_models/stgcn_model.pth"
+
+# SCM模型参数
+scm:
+  treatment_identifier: 'Wuhan' # 示例
+  outcome_var: 'value'
+  # 其他SCM需要的参数...
