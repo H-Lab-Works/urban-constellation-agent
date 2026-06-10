@@ -151,7 +151,7 @@ curl -X POST http://127.0.0.1:5050/api/rag \
 
 ## Competition Result
 
-The project won a third prize in the China Graduate Smart City Technology and Creative Design Competition. Personal certificates and official proof files are intentionally excluded from this portfolio repository to avoid exposing private information; they can be provided separately when needed.
+The project won a second prize in the China Graduate Smart City Technology Competition. Personal certificates and official proof files are intentionally excluded from this portfolio repository to avoid exposing private information; they can be provided separately when needed.
 
 ## Notes
 
