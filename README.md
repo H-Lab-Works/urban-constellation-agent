@@ -156,3 +156,7 @@ The project won a second prize in the China Graduate Smart City Technology Compe
 ## Notes
 
 Large model files, raw migration data, raw submission packages, certificates, official proof files, and files containing private contact details are intentionally excluded from this portfolio repository.
+
+## Acknowledgments
+
+Thanks to Professor Hu of Star team for his guidance and 5 team members for their joint contributions.
